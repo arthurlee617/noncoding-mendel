@@ -1,0 +1,11 @@
+Exploded.tsv - filtered for location + phenotype
+
+lauren/hail/hail-files/SV/SV-filter.R -> takes complete SV inh call bed, filters it into phenotype-specific SV’s (location, family, splits into line per SV per individual, per peak): -SV-inher-exploded.tsv
+
+SV-analysis.py uses hail to aggregate all calls back into single line per SV
+Filter any SV’s that are present in an unaffected individual
+Import full callset as MT
+Use this to filter out improperly inherited SV’s in large pedigrees
+Collect list of families w large pedigrees and list of fitting sv’s; filter aggregated table to remove any SV’s present in these families that do not fit structure
+
+Generate list of phenotype-specific SV loci that contain >=1 accessible peak
