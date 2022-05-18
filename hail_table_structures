@@ -209,3 +209,28 @@ Row fields:
 ----------------------------------------
 Key: ['locus', 'alleles']
 ----------------------------------------
+>>> ped = hl.import_table('engleccdd-2.fam', no_header=True)
+2022-05-18 10:55:45 Hail: INFO: Reading table without type imputation
+  Loading field 'f0' as type str (not specified)
+  Loading field 'f1' as type str (not specified)
+  Loading field 'f2' as type str (not specified)
+  Loading field 'f3' as type str (not specified)
+  Loading field 'f4' as type str (not specified)
+  Loading field 'f5' as type str (not specified)
+  Loading field 'f6' as type str (not specified)
+>>> ped = ped.select(famID = ped.f0, proband_ID = ped.f1, father_ID = ped.f2, mother_id= ped.f3, sex = ped.f4, affected=ped.f5)
+>>> ped.describe()
+----------------------------------------
+Global fields:
+    None
+----------------------------------------
+Row fields:
+    'famID': str 
+    'proband_ID': str 
+    'father_ID': str 
+    'mother_id': str 
+    'sex': str 
+    'affected': str 
+----------------------------------------
+Key: []
+----------------------------------------
