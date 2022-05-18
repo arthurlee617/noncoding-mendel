@@ -1,0 +1,211 @@
+Python 3.7.6 | packaged by conda-forge | (default, Mar  4 2020, 17:06:33) 
+[GCC 7.3.0] on linux
+Type "help", "copyright", "credits" or "license" for more information.
+>>> import hail as hl
+>>> mt =hl.read_matrix_table('G900.mt')
+Initializing Hail with default parameters...
+2022-05-18 10:35:50 WARN  Utils:69 - Your hostname, rdt01343 resolves to a loopback address: 127.0.0.1; using 10.32.72.149 instead (on interface enp0s25)
+2022-05-18 10:35:50 WARN  Utils:69 - Set SPARK_LOCAL_IP if you need to bind to another address
+2022-05-18 10:35:51 WARN  NativeCodeLoader:60 - Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
+Setting default log level to "WARN".
+To adjust logging level use sc.setLogLevel(newLevel). For SparkR, use setLogLevel(newLevel).
+Running on Apache Spark version 3.1.2
+SparkUI available at http://10.32.72.149:4040
+Welcome to
+     __  __     <>__
+    / /_/ /__  __/ /
+   / __  / _ `/ / /
+  /_/ /_/\_,_/_/_/   version 0.2.83-b3151b4c4271
+LOGGING: writing to /home/adigioia/lauren/hail/hail-files/hail-20220518-1035-0.2.83-b3151b4c4271.log
+>>> mt.describe()
+----------------------------------------
+Global fields:
+    None
+----------------------------------------
+Column fields:
+    's': str
+----------------------------------------
+Row fields:
+    'locus': locus<GRCh38>
+    'alleles': array<str>
+    'rsid': str
+    'qual': float64
+    'filters': set<str>
+    'info': struct {
+        AC: array<int32>, 
+        AF: array<float64>, 
+        AN: int32, 
+        BaseQRankSum: array<float64>, 
+        ClippingRankSum: array<float64>, 
+        DB: bool, 
+        DP: int32, 
+        END: int32, 
+        ExcessHet: array<float64>, 
+        FS: float64, 
+        InbreedingCoeff: float64, 
+        MLEAC: array<int32>, 
+        MLEAF: array<float64>, 
+        MQ: float64, 
+        MQRankSum: array<float64>, 
+        NEGATIVE_TRAIN_SITE: bool, 
+        POSITIVE_TRAIN_SITE: bool, 
+        QD: float64, 
+        RAW_MQ: array<float64>, 
+        ReadPosRankSum: array<float64>, 
+        SOR: float64, 
+        VQSLOD: float64, 
+        culprit: str
+    }
+----------------------------------------
+Entry fields:
+    'AD': array<int32>
+    'DP': int32
+    'GQ': int32
+    'GT': call
+    'MIN_DP': array<int32>
+    'PGT': array<str>
+    'PID': array<str>
+    'PL': array<int32>
+    'RGQ': int32
+    'SB': array<int32>
+----------------------------------------
+Column key: ['s']
+Row key: ['locus', 'alleles']
+----------------------------------------
+>>> ht = hl.read_table('G900annotated.ht')
+>>> ht.describe()
+----------------------------------------
+Global fields:
+    None
+----------------------------------------
+Row fields:
+    'locus': locus<GRCh38> 
+    'alleles': array<str> 
+    'rsid': str 
+    'qual': float64 
+    'filters': set<str> 
+    'info': struct {
+        AC: array<int32>, 
+        AF: array<float64>, 
+        AN: int32, 
+        BaseQRankSum: array<float64>, 
+        ClippingRankSum: array<float64>, 
+        DB: bool, 
+        DP: int32, 
+        END: int32, 
+        ExcessHet: array<float64>, 
+        FS: float64, 
+        InbreedingCoeff: float64, 
+        MLEAC: array<int32>, 
+        MLEAF: array<float64>, 
+        MQ: float64, 
+        MQRankSum: array<float64>, 
+        NEGATIVE_TRAIN_SITE: bool, 
+        POSITIVE_TRAIN_SITE: bool, 
+        QD: float64, 
+        RAW_MQ: array<float64>, 
+        ReadPosRankSum: array<float64>, 
+        SOR: float64, 
+        VQSLOD: float64, 
+        culprit: str
+    } 
+    'a_index': int32 
+    'was_split': bool 
+    'loci': locus<GRCh38> 
+    'newalleles': array<str> 
+    'most_severe_consequence': str 
+    'gnomad_genomes_freq': float64 
+    'gnomad_genomes_AC': int32 
+    'gnomad_exomes_freq': float64 
+    'gnomad_exomes_AC': int32 
+    'variant_qc': struct {
+        dp_stats: struct {
+            mean: float64, 
+            stdev: float64, 
+            min: float64, 
+            max: float64
+        }, 
+        gq_stats: struct {
+            mean: float64, 
+            stdev: float64, 
+            min: float64, 
+            max: float64
+        }, 
+        AC: array<int32>, 
+        AF: array<float64>, 
+        AN: int32, 
+        homozygote_count: array<int32>, 
+        call_rate: float64, 
+        n_called: int64, 
+        n_not_called: int64, 
+        n_filtered: int64, 
+        n_het: int64, 
+        n_non_ref: int64, 
+        het_freq_hwe: float64, 
+        p_value_hwe: float64
+    } 
+    'clinvar_variant_summary': array<struct {
+        Type: str, 
+        Name: str, 
+        GeneID: int32, 
+        GeneSymbol: str, 
+        HGNC_ID: str, 
+        ClinicalSignificance: str, 
+        ClinSigSimple: int32, 
+        LastEvaluated: str, 
+        `RS# (dbSNP)`: int32, 
+        `nsv/esv (dbVar)`: str, 
+        RCVaccession: str, 
+        PhenotypeIDS: str, 
+        PhenotypeList: str, 
+        Origin: str, 
+        OriginSimple: str, 
+        Assembly: str, 
+        ChromosomeAccession: str, 
+        ReferenceAllele: str, 
+        AlternateAllele: str, 
+        Cytogenetic: str, 
+        ReviewStatus: str, 
+        NumberSubmitters: int32, 
+        Guidelines: str, 
+        TestedInGTR: str, 
+        OtherIDs: str, 
+        SubmitterCategories: int32, 
+        VariationID: int32, 
+        AlleleID: int32
+    }> 
+    'gerp_scores': struct {
+        N: float64, 
+        S: float64
+    } 
+    'gerp_elements': array<struct {
+        S: float64, 
+        p_value: float64
+    }> 
+----------------------------------------
+Key: ['locus', 'alleles']
+----------------------------------------
+>>> topmed = hl.read_table('topmed.ht')
+>>> topmed.describe()
+----------------------------------------
+Global fields:
+    None
+----------------------------------------
+Row fields:
+    'locus': locus<GRCh38> 
+    'alleles': array<str> 
+    'rsid': str 
+    'qual': float64 
+    'filters': set<str> 
+    'info': struct {
+        NS: int32, 
+        AN: int32, 
+        AC: array<int32>, 
+        AF: array<float64>, 
+        Het: array<int32>, 
+        Hom: array<int32>, 
+        VRT: int32
+    } 
+----------------------------------------
+Key: ['locus', 'alleles']
+----------------------------------------
