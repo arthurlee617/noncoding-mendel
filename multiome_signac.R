@@ -73,3 +73,4 @@ p1 <- DimPlot(merged, group.by = "dataset")
 
 
 DimPlot(merged, group.by = 'predicted.id', size = 1)
+saveRDS(merged, 'multiomics_cn347smn_e115_signac.rds')
