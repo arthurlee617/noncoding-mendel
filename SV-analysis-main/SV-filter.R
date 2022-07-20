@@ -2,7 +2,7 @@ library(GenomicRanges)
 library(tidyr)
 library(dplyr)
 library(regioneR)
-setwd('~/lauren/hail/hail-files/SV')
+setwd('~/hail/hail-files/SV')
 inh <- read.table('annot.inhsubset.filter.bed', header=TRUE, comment.char = '')
 colnames(inh)[1] <- 'chr'
 inhGR <- toGRanges(inh)
