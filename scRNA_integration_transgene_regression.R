@@ -1,7 +1,7 @@
 library(Seurat)
 library(dplyr)
 library(patchwork)
-setwd('/home/adigioia/lauren/scRNA')
+setwd('/scRNA')
 
 #####
 # Integrated analysis
@@ -100,4 +100,4 @@ integrated <- RunTSNE(integrated, dims =1:50, perplexity = 50)
 
 integrated <- FindNeighbors(integrated, reduction = "pca", dims = 1:50)
 integrated <- FindClusters(integrated, resolution = 1.2)
-saveRDS(integrated, '~/lauren/scRNA/scRNA_integrated_transgeneregression.rds')
+saveRDS(integrated, '/scRNA/scRNA_integrated_transgeneregression.rds')
