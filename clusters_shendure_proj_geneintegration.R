@@ -1,7 +1,7 @@
 library(ArchR)
 library(Seurat)
 library(dplyr)
-setwd('~/lauren/ArchR/subprojects')
+setwd('/ArchR/subprojects')
 
 
 
@@ -9,33 +9,33 @@ library(Seurat)
 library(ArchR)
 library(dplyr)
 library(tidyr)
-setwd('/home/adigioia/lauren/ArchR/subprojects')
+setwd('/ArchR/subprojects')
 library(stringr)
 addArchRGenome("mm10")
 ## BE SURE TO SET FORCE = FALSE TO NOT OVERWRITE ARROW FILES
-inputFiles <- c('/home/adigioia/scATAC/finalWorkflow/clusters/cluster0/cluster0.bam',
-                '/home/adigioia/scATAC/finalWorkflow/clusters/cluster1/cluster1.bam',
-                '/home/adigioia/scATAC/finalWorkflow/clusters/cluster2/cluster2.bam',
-                '/home/adigioia/scATAC/finalWorkflow/clusters/cluster3/cluster3.bam',
-                '/home/adigioia/scATAC/finalWorkflow/clusters/cluster4/cluster4.bam',
-                '/home/adigioia/scATAC/finalWorkflow/clusters/cluster5/cluster5.bam',
-                '/home/adigioia/scATAC/finalWorkflow/clusters/cluster6/cluster6.bam',
-                '/home/adigioia/scATAC/finalWorkflow/clusters/cluster7/cluster7.bam',
-                '/home/adigioia/scATAC/finalWorkflow/clusters/cluster8/cluster8.bam',
-                '/home/adigioia/scATAC/finalWorkflow/clusters/cluster9/cluster9.bam',
-                '/home/adigioia/scATAC/finalWorkflow/clusters/cluster10/cluster10.bam',
-                '/home/adigioia/scATAC/finalWorkflow/clusters/cluster11/cluster11.bam',
-                '/home/adigioia/scATAC/finalWorkflow/clusters/cluster12/cluster12.bam',
-                '/home/adigioia/scATAC/finalWorkflow/clusters/cluster13/cluster13.bam',
-                '/home/adigioia/scATAC/finalWorkflow/clusters/cluster14/cluster14.bam',
-                '/home/adigioia/scATAC/finalWorkflow/clusters/cluster15/cluster15.bam',
-                '/home/adigioia/scATAC/finalWorkflow/clusters/cluster16/cluster16.bam',
-                '/home/adigioia/scATAC/finalWorkflow/clusters/cluster17/cluster17.bam',
-                '/home/adigioia/scATAC/finalWorkflow/clusters/cluster18/cluster18.bam',
-                '/home/adigioia/scATAC/finalWorkflow/clusters/cluster19/cluster19.bam',
-                '/home/adigioia/scATAC/finalWorkflow/clusters/cluster20/cluster20.bam',
-                '/home/adigioia/scATAC/finalWorkflow/clusters/cluster21/cluster21.bam',
-                '/home/adigioia/scATAC/finalWorkflow/clusters/cluster22/cluster22.bam'
+inputFiles <- c('/scATAC/finalWorkflow/clusters/cluster0/cluster0.bam',
+                '/scATAC/finalWorkflow/clusters/cluster1/cluster1.bam',
+                '/scATAC/finalWorkflow/clusters/cluster2/cluster2.bam',
+                '/scATAC/finalWorkflow/clusters/cluster3/cluster3.bam',
+                '/scATAC/finalWorkflow/clusters/cluster4/cluster4.bam',
+                '/scATAC/finalWorkflow/clusters/cluster5/cluster5.bam',
+                '/scATAC/finalWorkflow/clusters/cluster6/cluster6.bam',
+                '/scATAC/finalWorkflow/clusters/cluster7/cluster7.bam',
+                '/scATAC/finalWorkflow/clusters/cluster8/cluster8.bam',
+                '/scATAC/finalWorkflow/clusters/cluster9/cluster9.bam',
+                '/scATAC/finalWorkflow/clusters/cluster10/cluster10.bam',
+                '/scATAC/finalWorkflow/clusters/cluster11/cluster11.bam',
+                '/scATAC/finalWorkflow/clusters/cluster12/cluster12.bam',
+                '/scATAC/finalWorkflow/clusters/cluster13/cluster13.bam',
+                '/scATAC/finalWorkflow/clusters/cluster14/cluster14.bam',
+                '/scATAC/finalWorkflow/clusters/cluster15/cluster15.bam',
+                '/scATAC/finalWorkflow/clusters/cluster16/cluster16.bam',
+                '/scATAC/finalWorkflow/clusters/cluster17/cluster17.bam',
+                '/scATAC/finalWorkflow/clusters/cluster18/cluster18.bam',
+                '/scATAC/finalWorkflow/clusters/cluster19/cluster19.bam',
+                '/scATAC/finalWorkflow/clusters/cluster20/cluster20.bam',
+                '/scATAC/finalWorkflow/clusters/cluster21/cluster21.bam',
+                '/scATAC/finalWorkflow/clusters/cluster22/cluster22.bam'
 )
 names(inputFiles) <- c('cluster0', 'cluster1', 'cluster2', 'cluster3', 'cluster4', 'cluster5', 'cluster6', 'cluster7', 'cluster8', 'cluster9', 'cluster10',
                        'cluster11', 'cluster12', 'cluster13', 'cluster14', 'cluster15', 'cluster16', 'cluster17', 'cluster18', 'cluster19', 'cluster20', 'cluster21', 'cluster22')
@@ -47,16 +47,16 @@ ArrowFiles <- createArrowFiles(inputFiles =inputFiles, sampleNames =names(inputF
 proj <- ArchRProject(ArrowFiles = ArrowFiles, outputDirectory = "clusters_shendure", copyArrows = TRUE ) ### 85655 / 86089 cells
 
 #conda activate umap
-#python /home/adigioia/scATAC/finalWorkflow/scripts/runUmap.py /home/adigioia/scATAC/finalWorkflow/finalSamples/allSamples_filtered.SVDs.txt /home/adigioia/lauren/allSamples_filtered.umap2d.txt
+#python /scATAC/finalWorkflow/scripts/runUmap.py /scATAC/finalWorkflow/finalSamples/allSamples_filtered.SVDs.txt allSamples_filtered.umap2d.txt
 #conda deactivate
 ### add UMAP coordinates generated from 
 ## do not filter doublets, etc; all QC / cell filtering has already happened at this point
 
-umap <- read.table('/home/adigioia/lauren/allSamples_filtered.umap2d.txt')
+umap <- read.table('allSamples_filtered.umap2d.txt')
 colnames(umap) <- c('UMAPx', 'UMAPy')
-cells <- read.table('/home/adigioia/scATAC/finalWorkflow/finalSamples/allSamples_filtered.cells.txt')
+cells <- read.table('/scATAC/finalWorkflow/finalSamples/allSamples_filtered.cells.txt')
 umap$barcode <- cells$V1
-celldata <- read.table('/home/adigioia/scATAC/finalWorkflow/finalSamples/allSamples_finalFiltered.cellData.txt', header = TRUE)
+celldata <- read.table('/scATAC/finalWorkflow/finalSamples/allSamples_finalFiltered.cellData.txt', header = TRUE)
 celldata <- celldata %>% select(-c(UMAP1, UMAP2, UMAP3))
 
 celldata <- merge(celldata, umap)
@@ -76,13 +76,13 @@ proj@embeddings[['UMAP']] <- SimpleList(
 
 
 ### REDUCED DIMS FOR ARCHR PROJECT - get SVD from shendure workflow
-# adigioia@rdt01343:~/lauren$ cp '/home/adigioia/scATAC/finalWorkflow/finalSamples/allSamples_filtered.SVDs.txt' .
-# adigioia@rdt01343:~/lauren$ cut -f2-50 allSamples_filtered.SVDs.txt > allSamples_filtered_trimmed.SVDs.txt
-svds <- read.table('/home/adigioia/lauren/allSamples_filtered_trimmed.SVDs.txt')
+# cp '/scATAC/finalWorkflow/finalSamples/allSamples_filtered.SVDs.txt' .
+# cut -f2-50 allSamples_filtered.SVDs.txt > allSamples_filtered_trimmed.SVDs.txt
+svds <- read.table('/allSamples_filtered_trimmed.SVDs.txt')
 svds <- as.matrix(svds)
-cells <- read.table('/home/adigioia/scATAC/finalWorkflow/finalSamples/allSamples_filtered.cells.txt')
+cells <- read.table('/scATAC/finalWorkflow/finalSamples/allSamples_filtered.cells.txt')
 colnames(cells) <- 'barcode'
-celldata <- read.table('/home/adigioia/scATAC/finalWorkflow/finalSamples/allSamples_filtered.cellData.txt', header = TRUE)
+celldata <- read.table('/scATAC/finalWorkflow/finalSamples/allSamples_filtered.cellData.txt', header = TRUE)
 celldata <- merge(celldata, cells)
 #celldata <- celldata %>% separate(barcode, c('barcode', NA), sep = '-', remove = TRUE)
 celldata$cluster <- paste('cluster', celldata$cluster, sep = '')
@@ -100,9 +100,9 @@ proj@reducedDims[['IterativeLSI']] <- SimpleList(
   corToDepth = NA
 )
 
-cells <- read.table('/home/adigioia/scATAC/finalWorkflow/finalSamples/allSamples_filtered.cells.txt')
+cells <- read.table('/scATAC/finalWorkflow/finalSamples/allSamples_filtered.cells.txt')
 colnames(cells) <- 'barcode'
-celldata <- read.table('/home/adigioia/scATAC/finalWorkflow/finalSamples/allSamples_filtered.cellData.txt', header = TRUE)
+celldata <- read.table('/scATAC/finalWorkflow/finalSamples/allSamples_filtered.cellData.txt', header = TRUE)
 celldata <- merge(celldata, cells)
 #celldata <- celldata %>% separate(barcode, c('barcode', NA), sep = '-', remove = TRUE)
 celldata$cluster <- paste('cluster', celldata$cluster, sep = '')
@@ -121,7 +121,7 @@ saveArchRProject(proj)
 
 ##Add peakset, add peakset annotations
 library(regioneR)
-SamplePeaks <- read.table('/home/adigioia/scATAC/finalWorkflow/finalSamples/allSamples_finalFiltered.peaks.sorted.bed')
+SamplePeaks <- read.table('/scATAC/finalWorkflow/finalSamples/allSamples_finalFiltered.peaks.sorted.bed')
 colnames(SamplePeaks) <- c('chr', 'start', 'end')
 SamplePeaks <- toGRanges(SamplePeaks, genome="mm10")
 
@@ -206,8 +206,8 @@ proj <- proj[!(proj$Sample %in% c('cluster3', 'cluster4', 'cluster5', 'cluster9'
 saveArchRProject(proj, outputDirectory = 'clusters_shendure_drop_SMN_CN12')
 proj <- loadArchRProject("clusters_shendure_drop_SMN_CN12")
 
-integrated<- readRDS('~/lauren/scRNA/scRNA_integrated_transgeneregression.R')
-proj <- loadArchRProject('~/lauren/ArchR/subprojects/clusters_shendure_drop_SMN_CN12')
+integrated<- readRDS('/scRNA/scRNA_integrated_transgeneregression.R')
+proj <- loadArchRProject('/ArchR/subprojects/clusters_shendure_drop_SMN_CN12')
 ### USE THIS DIM REDUCTION FOR GENE INTEGRATION - manually added dim reduction doesn't seem to be working
 proj <- addIterativeLSI(
   ArchRProj = proj,
@@ -283,7 +283,7 @@ plotEmbedding(proj, embedding = 'UMAP', colorBy = 'cellColData', name ='')
 groups <- proj$predictedGroup_Un
 names(groups) <- proj$cellNames
 
-proj2 <- loadArchRProject('~/lauren/ArchR/subprojects/cluster2')
+proj2 <- loadArchRProject('/ArchR/subprojects/cluster2')
 proj2$predictedGroup <- groups[proj2$cellNames]
 plotEmbedding(proj2, name = 'predictedGroup', pal = paletteDiscrete(unique(integrated$seurat_clusters), set = "stallion"))
 
@@ -299,10 +299,10 @@ markerList <- getMarkers(markerGenes, cutOff = "FDR <= 0.01 & Log2FC >= 1.25")
 for (i in 1:19){
   clust <- names(markerList@listData)[i]
   a <- data.frame(markerList@listData[i])
-  write.table(a,paste('~/lauren/ArchR/subprojects/markergenes/Gene_Integration_markergenes_', clust, '.tsv', sep = ''), quote = F, row.names = F, col.names = TRUE, sep = '\t')
+  write.table(a,paste('/ArchR/subprojects/markergenes/Gene_Integration_markergenes_', clust, '.tsv', sep = ''), quote = F, row.names = F, col.names = TRUE, sep = '\t')
   }
 
-### All gene integration analysis uses '~/lauren/ArchR/subprojects/clusters_shendure_drop_SMN_CN12'
+### All gene integration analysis uses '/ArchR/subprojects/clusters_shendure_drop_SMN_CN12'
 
 proj <- addPeak2GeneLinks(proj, reducedDims = "IterativeLSI_ArchR")
 
@@ -853,7 +853,7 @@ plotFootprints(
 
 
 ### PLOTS
-##'~/lauren/scRNA/scRNA_integrated_transgeneregression.R'
+##'/scRNA/scRNA_integrated_transgeneregression.R'
 DimPlot(integrated, cols = paletteDiscrete(unique(integrated$seurat_clusters), set = "stallion"), label = TRUE) # RNA_integrated_clusters.pdf
 DimPlot(integrated, group.by = 'CN') #RNA_integrated_CN
 FeaturePlot(integrated, features = 'Isl1', min.cutoff = 'q1')
@@ -882,14 +882,14 @@ heatmap(prop.table(table( proj$Clusters,proj$predictedGroup_Un)))
 
 ### Get marker genes for all subclusters
 proj <- loadArchRProject('clusters_shendure_drop_SMN_CN12')
-celldata <- read.table('/home/adigioia/scATAC/finalWorkflow/finalSamples/allSamples_finalFiltered.cellData.txt', header = TRUE)
+celldata <- read.table('/scATAC/finalWorkflow/finalSamples/allSamples_finalFiltered.cellData.txt', header = TRUE)
 celldata$cluster <- paste('cluster', celldata$cluster, sep = '')
 celldata <- celldata %>% unite(barcode, c(cluster, barcode),  sep = '#')
 rownames(celldata) <- celldata$barcode
 celldata <- celldata[proj$cellNames,]
 proj$subcluster <- celldata$subclusterNum
 
-setwd('~/lauren/ArchR/subprojects/clusters_projects')
+setwd('/ArchR/subprojects/clusters_projects')
 for (cluster in unique(proj$Sample)){
   print(cluster)
   subproj <- proj[proj$Sample == cluster,]
