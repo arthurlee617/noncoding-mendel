@@ -1,7 +1,7 @@
 # Take .tsv of TE calls and convert from tall to wide format for hail matrix table import
 
 #de novos
-setwd('/Users/laurenayers/Dropbox/lauren/hail-TE')
+setwd('/hail-TE')
 TE <- read.csv('TE-denovos.csv', header=TRUE)
 R <- colnames(TE)
 TE$Chr <- str_remove(TE$Chr,'chr')
@@ -20,9 +20,9 @@ TE_wide$Features  <- NULL
 TE_wide <- unique(TE_wide)
 write.table(TE_wide, file='TE-denovos.tsv', quote=FALSE, sep = '\t', col.names = TRUE, row.names = FALSE)
 
-setwd('/Users/laurenayers/Desktop/mt-searches')
+setwd('/mt-searches')
 TE <- read.table('20201001_CCDD_TE_Raw_genome-wide_rare_ins_BZ.tsv', header=FALSE, sep = "\t")
-setwd('/Users/laurenayers/Dropbox/lauren/hail-TE')
+setwd('/hail-TE')
 colnames(TE) <- R
 TE$Chr <- str_remove(TE$Chr,'chr')
 TE$locus <- paste(TE$Chr, TE$Breakpoint, sep=':')
