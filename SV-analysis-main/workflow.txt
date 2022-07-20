@@ -1,6 +1,6 @@
 Exploded.tsv - filtered for location + phenotype
 
-lauren/hail/hail-files/SV/SV-filter.R -> takes complete SV inh call bed, filters it into phenotype-specific SV’s (location, family, splits into line per SV per individual, per peak): -SV-inher-exploded.tsv
+/hail/hail-files/SV/SV-filter.R -> takes complete SV inh call bed, filters it into phenotype-specific SV’s (location, family, splits into line per SV per individual, per peak): -SV-inher-exploded.tsv
 
 SV-analysis.py uses hail to aggregate all calls back into single line per SV
 Filter any SV’s that are present in an unaffected individual
