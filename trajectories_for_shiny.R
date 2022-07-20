@@ -4,7 +4,7 @@ library(ArchR)
 library(batchelor)
 
 ## Clusters 2 and 11 (CN7 based clusters)
-proj <- loadArchRProject('/home/adigioia/lauren/ArchR/subprojects/clusters_shendure_drop_SMN_CN12')
+proj <- loadArchRProject('/ArchR/subprojects/clusters_shendure_drop_SMN_CN12')
 proj <- proj[proj$Sample %in% c('cluster2', 'cluster11')]
 ## Call new peaks on just this cluster; iterative sub-clsering - re-cluster (subclusters) + call peaks
 proj <- addIterativeLSI(
@@ -52,10 +52,10 @@ proj <- addClusters(
 )
 
 plotEmbedding(proj, embedding = "UMAP", colorBy = "cellColData", name = "subClusters")
-saveArchRProject(proj, outputDirectory = '~/lauren/ArchR/subprojects/cluster2_11')
+saveArchRProject(proj, outputDirectory = '/ArchR/subprojects/cluster2_11')
 
 
-pathToMacs2 <- '/home/adigioia/miniconda3/envs/ArchR/bin/macs2'
+pathToMacs2 <- '/miniconda3/envs/ArchR/bin/macs2'
 proj<- addGroupCoverages(ArchRProj = proj, groupBy = "subClusters")
 
 proj <- addReproduciblePeakSet(
@@ -144,9 +144,9 @@ saveRDS(a, "cluster2_11_gene.rds")
 
 ###
 ## CN3,4,7 based clusters
-proj <- loadArchRProject('/home/adigioia/lauren/ArchR/subprojects/clusters_shendure_drop_SMN_CN12')
+proj <- loadArchRProject('/ArchR/subprojects/clusters_shendure_drop_SMN_CN12')
 proj <- proj[proj$Sample %in% c('cluster8', 'cluster19', 'cluster10', 'cluster2', 'cluster11')]
-## Call new peaks on just this cell group; iterative sub-clsering - re-cluster (subclusters) + call peaks
+## Call new peaks on just this cell group; iterative sub-clustering - re-cluster (subclusters) + call peaks
 proj <- addIterativeLSI(
   ArchRProj = proj,
   useMatrix = "TileMatrix", 
@@ -192,10 +192,10 @@ proj <- addClusters(
 )
 
 plotEmbedding(proj, embedding = "UMAP", colorBy = "cellColData", name = "subClusters")
-saveArchRProject(proj, outputDirectory = '~/lauren/ArchR/subprojects/cluster8_19_10_2_11')
+saveArchRProject(proj, outputDirectory = '/ArchR/subprojects/cluster8_19_10_2_11')
 proj <- loadArchRProject("cluster8_19_10_2_11")
 
-pathToMacs2 <- '/home/adigioia/miniconda3/envs/ArchR/bin/macs2'
+pathToMacs2 <- '/miniconda3/envs/ArchR/bin/macs2'
 proj<- addGroupCoverages(ArchRProj = proj, groupBy = "subClusters")
 
 proj <- addReproduciblePeakSet(
@@ -282,7 +282,7 @@ saveRDS(cell, "cluster8_19_10_2_11celldata.rds")
 #####
 
 
-proj <- loadArchRProject('/home/adigioia/lauren/ArchR/subprojects/clusters_shendure_drop_SMN_CN12')
+proj <- loadArchRProject('/ArchR/subprojects/clusters_shendure_drop_SMN_CN12')
 proj <- proj[proj$Sample %in% c('cluster0', 'cluster7', 'cluster14', 'cluster15', )]
 ## Call new peaks on just this cluster; iterative sub-clsering - re-cluster (subclusters) + call peaks
 proj <- addIterativeLSI(
@@ -330,10 +330,10 @@ proj <- addClusters(
 )
 
 plotEmbedding(proj, embedding = "UMAP", colorBy = "cellColData", name = "subClusters")
-saveArchRProject(proj, outputDirectory = '~/lauren/ArchR/subprojects/cluster8_19_10_2_11')
+saveArchRProject(proj, outputDirectory = '/ArchR/subprojects/cluster8_19_10_2_11')
 
 
-pathToMacs2 <- '/home/adigioia/miniconda3/envs/ArchR/bin/macs2'
+pathToMacs2 <- '/miniconda3/envs/ArchR/bin/macs2'
 proj<- addGroupCoverages(ArchRProj = proj, groupBy = "subClusters")
 
 proj <- addReproduciblePeakSet(
