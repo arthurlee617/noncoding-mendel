@@ -1,6 +1,6 @@
 library(dplyr)
 library(tidyr)
-setwd('~/lauren/hail/hail-files/SV')
+setwd('~/hail/hail-files/SV')
 
 args = commandArgs(trailingOnly=TRUE)
 cn <- args[1]
