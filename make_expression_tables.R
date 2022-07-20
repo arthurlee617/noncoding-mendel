@@ -1,5 +1,5 @@
 library(Seurat)
-setwd('~/lauren/ArchR/scRNAseq')
+setwd('/ArchR/scRNAseq')
 
 dir <- 'CN6_E11-5A/mm10_cur'
 ob <- Read10X(dir)
