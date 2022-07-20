@@ -3,7 +3,7 @@ library(ArchR)
 library(parallel)
 addArchRGenome("mm10")
 
-proj <- loadArchRProject('~/lauren/ArchR/clusters_shendure')
+proj <- loadArchRProject('/ArchR/clusters_shendure')
 
 
 
