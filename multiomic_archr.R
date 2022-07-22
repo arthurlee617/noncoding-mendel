@@ -49,7 +49,7 @@ proj <- addIterativeLSI(
   name = "IterativeLSI"
 )
 
-peaks <- read.table('~/lauren/ArchR/beds/shendure.bed', col.names =c('chr','start','end')) %>% makeGRangesFromDataFrame()
+peaks <- read.table('/ArchR/beds/shendure.bed', col.names =c('chr','start','end')) %>% makeGRangesFromDataFrame()
 proj<- addPeakSet(proj, peaks)
 proj<- addPeakMatrix(proj)
 
