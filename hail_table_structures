@@ -16,7 +16,7 @@ Welcome to
     / /_/ /__  __/ /
    / __  / _ `/ / /
   /_/ /_/\_,_/_/_/   version 0.2.83-b3151b4c4271
-LOGGING: writing to /home/adigioia/lauren/hail/hail-files/hail-20220518-1035-0.2.83-b3151b4c4271.log
+LOGGING: writing to /home/hail/hail-files/hail-20220518-1035-0.2.83-b3151b4c4271.log
 >>> mt.describe()
 ----------------------------------------
 Global fields:
