@@ -4,7 +4,7 @@
 ## SV's present in unaffected individuals removed (remove SV ID)
 ## Results for large pedigrees filtered (remove hits in large pedigrees)
 ## Remove results that are present in a family w/o matching inher pattern (remove SV ID); identify variants present only 1x in family, or 2x in family where one is affected="3"
-## https://github.com/lorinairs/SV-analysis/blob/main/SV-analysis.py
+## https://github.com/SV-analysis/blob/main/SV-analysis.py
 
 
 import argparse
