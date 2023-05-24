@@ -2,9 +2,6 @@
 
 ############# combine time points but keep GFP+/- separate
 ## this one probably works best (after 90 degree transpose)
-
-setwd('/Users/arthur/Dropbox (BCH)/6. Arthur ATACseq/1. Figures/z. S_purity_fig/src/Cluster Homogeneity Heatmaps/')
-
 #Generate a heatmap of cluster vs tissue+gfp+time
 #all cells are represented
 
@@ -50,9 +47,6 @@ Heatmap(ccmatrixpercent,
 dev.off()
 
 ############# separate time points and keep GFP+/- separate
-
-setwd('/Users/arthur/Dropbox (BCH)/6. Arthur ATACseq/1. Figures/purity_fig/src/Cluster Homogeneity Heatmaps/')
-
 #Generate a heatmap of cluster vs tissue+gfp+time
 #all cells are represented
 
@@ -100,9 +94,6 @@ dev.off()
 
 ############# separate all replicates
 ## cluster membership is not determined by replicate; consistent with not batch effects
-
-setwd('/Users/arthur/Dropbox (BCH)/6. Arthur ATACseq/1. Figures/purity_fig/src/Cluster Homogeneity Heatmaps/')
-
 #Generate a heatmap of cluster vs tissue+gfp+time
 #all cells are represented
 
@@ -148,9 +139,6 @@ dev.off()
 
 ############# separate all replicates and plot against subcluster
 ## cluster membership is not determined by replicate; consistent with not batch effects
-
-setwd('/Users/arthur/Dropbox (BCH)/6. Arthur ATACseq/1. Figures/purity_fig/src/Cluster Homogeneity Heatmaps/')
-
 #Generate a heatmap of cluster vs tissue+gfp+time
 #all cells are represented
 
@@ -204,9 +192,6 @@ Heatmap((ccmatrixpercent),
         column_order = get_order(o))
 
 ############# tissue+time vs. subcluster (order tissues)
-
-setwd('/Users/arthur/Dropbox (BCH)/6. Arthur ATACseq/1. Figures/z. S_purity_fig/src/Cluster Homogeneity Heatmaps/')
-
 #Generate a heatmap of cluster vs tissue+gfp+time
 #all cells are represented
 
@@ -254,9 +239,6 @@ Heatmap(ccmatrixpercent,
 dev.off()
 
 ############# tissue+time vs. subcluster (order tissues), flip axes
-
-setwd('/Users/arthur/Dropbox (BCH)/6. Arthur ATACseq/1. Figures/purity_fig/src/Cluster Homogeneity Heatmaps/')
-
 #Generate a heatmap of cluster vs tissue+gfp+time
 #all cells are represented
 
@@ -305,9 +287,6 @@ dev.off()
 
 
 ############# time vs. cluster
-
-setwd('/Users/arthur/Dropbox (BCH)/6. Arthur ATACseq/1. Figures/purity_fig/src/Cluster Homogeneity Heatmaps/')
-
 #Generate a heatmap of cluster vs tissue+gfp+time
 #all cells are represented
 
@@ -352,11 +331,7 @@ Heatmap((ccmatrixpercent),
         row_order = order(as.numeric(rownames(ccmatrixpercent))), 
         column_order = get_order(o))
 
-
 ############# time vs. subcluster
-
-setwd('/Users/arthur/Dropbox (BCH)/6. Arthur ATACseq/1. Figures/purity_fig/src/Cluster Homogeneity Heatmaps/')
-
 #Generate a heatmap of cluster vs tissue+gfp+time
 #all cells are represented
 
