@@ -148,7 +148,6 @@ dev.off()
 
 #read data table
 library(dplyr)
-#setwd('/Users/cassia/Desktop')
 a <- read.table("allSamples_finalFiltered.cellData_112019.txt", header=T, sep="\t")
 a$class <- paste(a$tissue, a$time, sep="-")
 a$subcluster <- paste(a$cluster, a$subclusterNum, sep=".")
@@ -201,7 +200,6 @@ Heatmap((ccmatrixpercent),
 
 #read data table
 library(dplyr)
-#setwd('/Users/cassia/Desktop')
 a <- read.table("allSamples_finalFiltered.cellData_112019.txt", header=T, sep="\t")
 a$class <- paste(a$tissue, a$time, sep="-")
 a$subcluster <- paste(a$cluster, a$subclusterNum, sep=".")
@@ -248,7 +246,6 @@ dev.off()
 
 #read data table
 library(dplyr)
-#setwd('/Users/cassia/Desktop')
 a <- read.table("allSamples_finalFiltered.cellData_112019.txt", header=T, sep="\t")
 a$class <- paste(a$tissue, a$time, sep="-")
 a$subcluster <- paste(a$cluster, a$subclusterNum, sep=".")
@@ -296,7 +293,6 @@ dev.off()
 
 #read data table
 library(dplyr)
-#setwd('/Users/cassia/Desktop')
 a <- read.table("allSamples_finalFiltered.cellData_112019.txt", header=T, sep="\t")
 a$class <- paste(a$tissue, a$time, sep="-")
 a$subcluster <- paste(a$cluster, a$subclusterNum, sep=".")
